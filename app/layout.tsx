@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import './globals.css'
+import InnerMainLayout from './components/inner-layout'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -14,10 +15,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <html lang="en">
       <body className={nunito.className}>
-        {children}
+          {/* <div className='flex flex-col md:flex-row'>
+            <div>
+              <Navbar />
+            </div>
+            <div>
+              {children}
+            </div>
+          </div> */}
+          <InnerMainLayout children={children} />
       </body>
     </html>
   )
