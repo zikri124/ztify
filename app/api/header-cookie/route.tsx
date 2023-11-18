@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { getCookie, setCookie } from '@/app/utils/cookies';
 import getSearchParams from '@/app/utils/get-search-params';
 
-export function GET(request: Request) {
+export async function GET(request: Request) {
     const url = request.url
     const name = getSearchParams(url, "name")
 
@@ -21,7 +21,7 @@ export function GET(request: Request) {
     return NextResponse.json({ message: "the cookie found", data: cookie.value })
 }
 
-export function POST(request: Request) {
+export async function POST(request: Request) {
     const url = request.url
     const name = getSearchParams(url, "name")
     const value = getSearchParams(url, "value")

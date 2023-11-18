@@ -1,18 +1,18 @@
 'use server'
-import { NextResponse } from "next/server";
-import getSearchParams from '@/app/utils/get-search-params';
-import { setCookie } from "@/app/utils/cookies";
+import { NextRequest, NextResponse } from "next/server"
+import getSearchParams from '@/app/utils/get-search-params'
+import parseToFormBody from "@/app/utils/parse-to-form-body"
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID
 const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET
-const REDIRECT_URI = "http://localhost:3000/api/spotify-token"
+const REDIRECT_URI = "http://localhost:3000/callback"
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
     const url = request.url
     const code = getSearchParams(url, "code")
     const state = getSearchParams(url, "state")
 
-    const refreshTokenExpire = 30 * 24 * 60 * 60 * 1000
+    const refreshTokenExpire = 30 * 24 * 60 * 60
 
     if (state === null) {
         return NextResponse.redirect('/#state_mismatch')
@@ -23,21 +23,9 @@ export async function GET(request: Request) {
             grant_type: "authorization_code"
         }
 
-        const getFormBodyString = (): string => {
-            let formBody = []
-            for (let property in body) {
-                let encodedKey = encodeURIComponent(property)
-                let encodedValue = encodeURIComponent(body[property])
-                formBody.push(`${encodedKey}=${encodedValue}`)
-            }
-            const formBodyString = formBody.join("&")
-
-            return formBodyString
-        }
-
         const response = await fetch("https://accounts.spotify.com/api/token", {
             method: "POST",
-            body: getFormBodyString(),
+            body: parseToFormBody(body),
             headers: {
                 'content-type': 'application/x-www-form-urlencoded',
                 'Authorization': 'Basic ' + (Buffer.from(CLIENT_ID + ':' + CLIENT_SECRET).toString('base64'))
@@ -45,11 +33,21 @@ export async function GET(request: Request) {
         })
 
         const data = await response.json()
+        
+        const responseApi = NextResponse.json({ success: true })
+        if (!data.error) {
+            responseApi.cookies.set("access_token", data.access_token, {
+                httpOnly: true,
+                maxAge: data.expires_in
+            })
+            responseApi.cookies.set("refresh_token", data.refresh_token, {
+                httpOnly: true,
+                maxAge: refreshTokenExpire
+            })
+        } else {
+            console.log(data)
+        }
 
-        await setCookie("refresh_token", data.refresh_token, refreshTokenExpire)
-        await setCookie("access_token", data.access_token, data.expires_in * 1000)
-
-        // NextResponse.redirect(`/#access_token=${data.access_token}&refresh_token`)
-        return NextResponse.json({ success: true })
+        return responseApi
     }
 }
