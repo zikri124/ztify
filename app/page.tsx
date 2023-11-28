@@ -1,9 +1,9 @@
-'use client'
-import Header from "./components/header/header"
+import Header from "../components/header/header"
 import isMobileSize from "./utils/get-window-size"
 
 export default function Home() {
-  const isMobile = isMobileSize()
+  // const isMobile = isMobileSize()
+  const isMobile = true
   
   return (
     <main className="flex flex-col h-full">

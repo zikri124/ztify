@@ -1,11 +1,10 @@
-'use client'
-import isMobileSize from "../utils/get-window-size"
+import isMobileSize from "../app/utils/get-window-size"
 import Navbar from "./navbar/navbar"
 import Header from "./header/header"
 import Container from "./ui/container"
 
 const InnerMainLayout = ({ children }: { children: React.ReactNode }) => {
-    const isMobile: boolean = isMobileSize()
+    const isMobile: boolean = true
 
     const flexSet = {
         mobile: 'flex flex-col',

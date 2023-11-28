@@ -1,13 +1,17 @@
-'use-server'
+'use server'
 
-import { getCookie } from "./cookies"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
-export function CheckAuth() {
-    const token = getCookie("access_token")
+export async function CheckAuth() {
+    const token = cookies().get("access_token")
     
-    return token
+    return token?.value
 }
 
-export function LogOut() {
-    
+export async function LogOut() {
+    cookies().delete("access_token")
+    cookies().delete("refresh_token")
+
+    redirect('/auth')
 }

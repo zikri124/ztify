@@ -1,3 +1,3 @@
-interface BodyReq {
+type BodyReq = {
     [key: string]: string
 }
