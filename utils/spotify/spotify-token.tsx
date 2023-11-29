@@ -2,7 +2,7 @@ import parseToFormBody from "../parse-to-form-body"
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID
 const CLIENT_SECRET = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET
-const REDIRECT_URI = "http://localhost:3000/callback"
+const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI
 
 export async function getSpotifyToken(code: string | undefined, state: string | undefined) {
     if (state === null) {
@@ -10,7 +10,7 @@ export async function getSpotifyToken(code: string | undefined, state: string | 
     } else if (code != null) {
         const body: BodyReq = {
             code: code,
-            redirect_uri: REDIRECT_URI,
+            redirect_uri: REDIRECT_URI!,
             grant_type: "authorization_code"
         }
 
@@ -25,7 +25,7 @@ export async function getSpotifyToken(code: string | undefined, state: string | 
 
         const data = await response.json()
 
-        if (!data.error) {
+        if (data.error) {
             console.log(data)
         }
 

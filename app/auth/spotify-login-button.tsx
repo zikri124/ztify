@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Link from "next/link"
 
 const generateRandomString = (length: number) => {
@@ -8,16 +9,21 @@ const generateRandomString = (length: number) => {
 
 const LoginButton = () => {
     const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID
-    const REDIRECT_URI = "http://localhost:3000/callback"
+
     const RESPONSE_TYPE = "code"
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const SCOPES = ['user-read-currently-playing', 'user-top-read', 'user-read-private']
     const SCOPEs_URL_PARAM = SCOPES.join("%20")
     const state = generateRandomString(16)
+    const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI
 
     return (
         <>
-            <Link href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPEs_URL_PARAM}&state=${state}` }><div className='rounded-full border border-secondary px-4 py-2'>Login</div></Link>
+            <Link href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPEs_URL_PARAM}&state=${state}`}>
+                <Button>
+                    Login
+                </Button>
+            </Link>
         </>
     )
 }

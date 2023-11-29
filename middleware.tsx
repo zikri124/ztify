@@ -5,18 +5,33 @@ import { getRefreshAccessToken } from './utils/spotify/spotify-token'
 export async function middleware(request: NextRequest) {
     const accessToken = request.cookies.get("access_token")
 
+    if (request.nextUrl.pathname.startsWith('/logout')) {
+        const response = NextResponse.redirect(new URL('/auth', request.url))
+        response.cookies.delete("access_token")
+        response.cookies.delete("refresh_token")
+
+        return response
+    }
+    
     if (accessToken !== undefined) {
+        if (request.nextUrl.pathname.startsWith('/auth')) {
+            return NextResponse.redirect(new URL('/', request.url))
+        }
         return NextResponse.next()
     } else {
+        if (request.nextUrl.pathname.startsWith('/auth')) {
+            return NextResponse.next()
+        }
+
         const refreshToken = request.cookies.get("refresh_token")
         if (refreshToken !== undefined) {
             const accessToken = await getRefreshAccessToken(refreshToken)
             const response = NextResponse.next()
             response.cookies.set({
                 name: 'access_token',
-		        value: accessToken,
+                value: accessToken,
                 maxAge: 3600,
-		        httpOnly: true,
+                httpOnly: true,
             })
 
             return response
@@ -27,6 +42,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
     matcher: [
-        '/((?!api|auth|callback|_next/static|_next/image|favicon.ico).*)'
+        '/((?!api|callback|_next/static|_next/image|favicon.ico).*)'
     ],
 }
