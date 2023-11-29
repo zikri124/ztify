@@ -1,7 +1,6 @@
-import isMobileSize from "../utils/get-window-size"
 import Navbar from "./navbar/navbar"
-import Header from "./header/header"
 import Container from "./ui/container"
+import { DynamicImportHeader } from "./header/dynamic-import-header"
 
 const InnerMainLayout = ({ children }: { children: React.ReactNode }) => {
     const isMobile: boolean = true
@@ -19,7 +18,7 @@ const InnerMainLayout = ({ children }: { children: React.ReactNode }) => {
                 </div>
                 <div className={"grow h-full overflow-y-auto " + (isMobile ? "order-1 bg-container" : "order-2")}>
                     <Container>
-                        {!isMobile && <Header isMobile={true} />}
+                        {!isMobile && <DynamicImportHeader />}
                         {children}
                     </Container>
                 </div>

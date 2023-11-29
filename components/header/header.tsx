@@ -1,8 +1,6 @@
-import { User } from "@/app/types/user"
-import fetchUserData from "@/utils/spotify/fetch-user-data"
 import { DropdownUserMenu } from "./dropdown-user-menu"
 
-const Header = async ({ isMobile }: { isMobile: boolean }) => {
+const Header = async () => {
     return (
         <>
             <div className='flex justify-between items-center w-full'>

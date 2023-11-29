@@ -36,16 +36,7 @@ export type TopTracks = {
                 "uri": string
             }[]
         },
-        "artists": {
-            "external_urls": {
-                "spotify": string
-            },
-            "href": string,
-            "id": string,
-            "name": string,
-            "type": string,
-            "uri": string
-        }[],
+        "artists": Artist[],
         "available_markets": string[],
         "disc_number": number,
         "duration_ms": number,
@@ -66,4 +57,15 @@ export type TopTracks = {
         "uri": string,
         "is_local": boolean
     }[]
+}
+
+export type Artist = {
+    "external_urls": {
+        "spotify": string
+    },
+    "href": string,
+    "id": string,
+    "name": string,
+    "type": string,
+    "uri": string
 }
