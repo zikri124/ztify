@@ -1,4 +1,4 @@
-import { TopArtists } from "@/app/types/top-artists"
+import { TopArtists } from "@/types/top-artists"
 import fetchTopArtists from "@/utils/spotify/fetch-top-artists"
 import Image from "next/image"
 import Link from "next/link"

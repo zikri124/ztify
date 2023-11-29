@@ -1,4 +1,4 @@
-import { SearchResult } from "@/app/types/search-result"
+import { SearchResult } from "@/types/search-result"
 
 const fetchSearch = async (query: string) => {
     const tokenResponse = await fetch("/api/header-cookie?name=access_token")

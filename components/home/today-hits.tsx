@@ -1,4 +1,4 @@
-import { BiggestHits } from "@/app/types/biggest-hits"
+import { BiggestHits } from "@/types/biggest-hits"
 import fetchBiggestHits from "@/utils/spotify/fetch-biggest-hits"
 import Image from "next/image"
 import Link from "next/link"

@@ -1,4 +1,4 @@
-import { TopArtists } from "@/app/types/top-artists"
+import { TopArtists } from "@/types/top-artists"
 import { cookies } from "next/headers"
 
 const fetchTopArtists = async () => {

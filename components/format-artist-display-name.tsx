@@ -1,4 +1,4 @@
-import { Artist } from "@/app/types/top-tracks"
+import { Artist } from "@/types/top-tracks"
 
 const formatArtistsNameDisplay = (artists: Artist[]) => {
     return (

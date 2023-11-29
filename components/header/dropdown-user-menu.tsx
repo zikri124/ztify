@@ -12,7 +12,7 @@ import {
 import { LogOut } from "@/utils/auth"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import Link from "next/link"
-import { User } from "@/app/types/user"
+import { User } from "@/types/user"
 import fetchUserData from "@/utils/spotify/fetch-user-data"
 
 export const DropdownUserMenu = async () => {

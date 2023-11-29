@@ -1,4 +1,4 @@
-import { BiggestHits } from "@/app/types/biggest-hits"
+import { BiggestHits } from "@/types/biggest-hits"
 import { cookies } from "next/headers"
 
 const fetchBiggestHits = async () => {

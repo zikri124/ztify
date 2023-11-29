@@ -1,4 +1,4 @@
-import { TopTracks, Artist } from "@/app/types/top-tracks"
+import { TopTracks, Artist } from "@/types/top-tracks"
 import fetchTopTracks from "@/utils/spotify/fetch-top-tracks"
 import Image from "next/image"
 import Link from "next/link"
@@ -18,7 +18,7 @@ const UserTopTracks = async ({ itemWidth }: { itemWidth: number }) => {
                                 <Image height={itemWidth} width={itemWidth} alt="artist-photo" src={item.album.images[1].url} className="aspect-square relative object-cover" />
                                 <h4 className="font-bold mt-2 line-clamp-1 break-word" style={{ width: `${itemWidth}px` }} >{item.name}</h4>
                                 <p className="line-clamp-1 text-sm" style={{ width: `${itemWidth}px` }}>
-                                    {formatArtistsNameDisplay(item.artists)}
+                                    Song &#8226; {formatArtistsNameDisplay(item.artists)}
                                 </p>
                             </Link>
                         ))}

@@ -1,4 +1,4 @@
-import { TopTracks } from "@/app/types/top-tracks"
+import { TopTracks } from "@/types/top-tracks"
 import { cookies } from "next/headers"
 
 const fetchTopTracks = async () => {
