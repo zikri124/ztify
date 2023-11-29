@@ -2,7 +2,7 @@
 
 import { NextResponse } from "next/server";
 // import { getCookie, setCookie } from '@/app/utils/cookies';
-import getSearchParams from '@/app/utils/get-search-params';
+import getSearchParams from '@/utils/get-search-params';
 import { cookies } from "next/headers";
 
 export async function GET(request: Request) {

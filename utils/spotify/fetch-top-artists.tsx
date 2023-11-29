@@ -1,21 +1,20 @@
-import { User } from "@/app/types/user"
+import { TopArtists } from "@/app/types/top-artists"
 import { cookies } from "next/headers"
 
-const fetchUserData = async () => {
+const fetchTopArtists = async () => {
     const accessToken = cookies().get("access_token")
     const token = `Bearer ${accessToken?.value}`
     
-    const response = await fetch("https://api.spotify.com/v1/me", {
+    const response = await fetch("https://api.spotify.com/v1/me/top/artists", {
         method: "GET",
         headers: {
             Authorization: token
         }
     })
 
-    const data: User = await response.json()
-    console.log(data)
+    const data: TopArtists = await response.json()
 
     return data
 }
 
-export default fetchUserData
+export default fetchTopArtists

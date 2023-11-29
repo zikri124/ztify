@@ -1,12 +1,10 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { getRefreshAccessToken } from './app/utils/spotify/spotify-token'
+import { getRefreshAccessToken } from './utils/spotify/spotify-token'
 
 export async function middleware(request: NextRequest) {
     const accessToken = request.cookies.get("access_token")
 
-    console.log('middleware called')
-    console.log(`${accessToken?.name} : ${accessToken?.value}`)
     if (accessToken !== undefined) {
         return NextResponse.next()
     } else {

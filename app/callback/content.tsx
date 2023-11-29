@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { setCookie } from "../utils/cookies"
+import { setCookie } from "../../utils/cookies"
 
 const Content = ({ data }: any) => {
     const refreshTokenExpire = 30 * 24 * 60 * 60

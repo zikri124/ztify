@@ -4,7 +4,7 @@ import LoginButton from "../../components/header/spotify-login-button"
 const Auth = () => {
     return (
         <>
-            <p>Please Login</p>
+            <p>Login Using Spotify Account</p>
             <LoginButton />
         </>
     )

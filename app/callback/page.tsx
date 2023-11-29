@@ -1,4 +1,4 @@
-import { getSpotifyToken } from "../utils/spotify/spotify-token";
+import { getSpotifyToken } from "../../utils/spotify/spotify-token";
 import Content from "./content";
 
 type Props = {
