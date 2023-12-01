@@ -1,6 +1,7 @@
 import ArtistAlbums from "@/types/artist/artist-albums"
 import { FetchArtistAlbums } from "@/utils/spotify/fetch-artist-albums"
 import { ItemCardVariant1 } from "../ui/spotify-item-card"
+import formatArtistsNameDisplay from "../../utils/format-artist-display-name"
 
 const ArtistAlbumsSection = async ({ artistId }: { artistId: string }) => {
     const albums: ArtistAlbums = await FetchArtistAlbums(artistId)
@@ -14,7 +15,7 @@ const ArtistAlbumsSection = async ({ artistId }: { artistId: string }) => {
                         <div className='w-max flex gap-4'>
                             {albums.items.map((album, i) => (
                                 <div key={i}>
-                                    <ItemCardVariant1 className="" imageUrl={album.images[0].url} title={album.name} hrefLink="/" artists={album.artists} type="Album" />
+                                    <ItemCardVariant1 className="" imageUrl={album.images[0].url} title={album.name} hrefLink="/" artist={formatArtistsNameDisplay(album.artists)} type="Album" />
                                 </div>
                             ))}
                         </div>

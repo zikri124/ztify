@@ -1,8 +1,6 @@
-import { TopTracks, Artist } from "@/types/top-tracks"
+import { TopTracks } from "@/types/top-tracks"
 import fetchTopTracks from "@/utils/spotify/fetch-top-tracks"
-import Image from "next/image"
-import Link from "next/link"
-import formatArtistsNameDisplay from "../format-artist-display-name"
+import formatArtistsNameDisplay from "../../utils/format-artist-display-name"
 import { ItemCardVariant1 } from "../ui/spotify-item-card"
 
 const UserTopTracks = async () => {
@@ -16,7 +14,7 @@ const UserTopTracks = async () => {
                     <div className='w-max flex gap-4'>
                         {topTracks.items.map((item, i) => (
                             <div key={i}>
-                                <ItemCardVariant1 className={""} imageUrl={item.album.images[1].url} title={item.name} artists={item.artists} hrefLink="/" type="Song" />
+                                <ItemCardVariant1 className={""} imageUrl={item.album.images[1].url} title={item.name} artist={formatArtistsNameDisplay(item.artists)} hrefLink="/" type="Song" />
                             </div>
                         ))}
                     </div>

@@ -14,6 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import Link from "next/link"
 import { User } from "@/types/user"
 import fetchUserData from "@/utils/spotify/fetch-user-data"
+import UserAvatar from "../ui/user-avatar"
 
 export const DropdownUserMenu = async () => {
     const userData: User = await fetchUserData()
@@ -22,12 +23,8 @@ export const DropdownUserMenu = async () => {
         <>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    {/* <Button variant="outline">Menu</Button> */}
                     <button className="rounded-full border border-white">
-                        <Avatar className="m-1">
-                            <AvatarImage src={userData.images.length > 1 ? userData.images[1].url : ""} alt="@shadcn" />
-                            <AvatarFallback>{userData.display_name.slice(0, 2).toUpperCase()}</AvatarFallback>
-                        </Avatar>
+                        <UserAvatar imageUrl={userData.images.length > 1 ? userData.images[1].url : ""} userName={userData.display_name} />
                     </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56">

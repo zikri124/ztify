@@ -18,8 +18,8 @@ const NavbarMobile = () => {
                     <Image className="invert" alt="search-logo" width={28} height={28} src={pathName == "/search" ? searchIconSrcs.filled : searchIconSrcs.outline} />
                     <p className="text-sm text-secondary text-white">Search</p>
                 </Link>
-                <Link href={'/your-library'} className="flex flex-col items-center gap-1">
-                    <Image className="invert" width="28" height="28" src={pathName == "/your-library" ? libraryIconSrcs.filled : libraryIconSrcs.outline} alt="music-library"/>
+                <Link href={'/library'} className="flex flex-col items-center gap-1">
+                    <Image className="invert" width="28" height="28" src={pathName == "/library" ? libraryIconSrcs.filled : libraryIconSrcs.outline} alt="music-library"/>
                     <p className="text-sm text-secondary text-white">Your Library</p>
                     
                 </Link>

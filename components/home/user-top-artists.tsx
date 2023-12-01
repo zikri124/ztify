@@ -1,10 +1,10 @@
 import { TopArtists } from "@/types/top-artists"
 import fetchTopArtists from "@/utils/spotify/fetch-top-artists"
-import { ArtistItemCard } from "../ui/artist-item-card"
+import { ArtistCardVariant1 } from "../ui/spotify-item-card"
 
 const UserTopArtists = async () => {
     const topArtists: TopArtists = await fetchTopArtists()
-    
+
     return (
         <>
             <h2 className="font-bold text-2xl mb-4">Your favorite artists</h2>
@@ -13,7 +13,7 @@ const UserTopArtists = async () => {
                     <div className='w-max flex gap-4'>
                         {topArtists.items.map((artist, i) => (
                             <div key={i}>
-                                <ArtistItemCard className="" imageUrl={artist.images[0].url} name={artist.name} hrefLink={`/artist/${artist.id}`} />
+                                <ArtistCardVariant1 className={""} imageUrl={artist.images[0].url} hrefLink={`/artist/${artist.id}`} artist={artist.name} />
                             </div>
                         ))}
                     </div>

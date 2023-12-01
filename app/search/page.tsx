@@ -5,9 +5,8 @@ import { useEffect, useRef, useState } from "react"
 import { SearchResult } from "../../types/search-result"
 import fetchSearch from "@/utils/spotify/fetch-search"
 import LoadingResult from "@/components/search/loading-result"
-import Image from "next/image"
-import formatArtistsNameDisplay from "@/components/format-artist-display-name"
-import CardResult from "@/components/search/card-result"
+import formatArtistsNameDisplay from "@/utils/format-artist-display-name"
+import { ArtistCardVariant2, ItemCardVariant2 } from "@/components/ui/spotify-item-card"
 
 const Search = () => {
     const [query, setQuery] = useState<string>()
@@ -19,7 +18,6 @@ const Search = () => {
             if (query !== "" && query !== undefined) {
                 setIsLoading(true)
                 const result: SearchResult | null = await fetchSearch(query!)
-                console.log(result)
                 if (result) {
                     setSearchResult(result)
                     setIsLoading(false)
@@ -49,30 +47,22 @@ const Search = () => {
                     <div className="space-y-4">
                         {searchResult.tracks.items.map((item, i) => (
                             <div key={i}>
-                                <CardResult name={item.name} imageUrl={item.album.images[0].url} circleImg={false} url="/">
-                                    <span>Song &#8226; {formatArtistsNameDisplay(item.artists)}</span>
-                                </CardResult>
+                                <ItemCardVariant2 className={""} imageUrl={item.album.images[0].url} title={item.name} hrefLink={"/"} type={"Song"} artist={formatArtistsNameDisplay(item.artists)} />
                             </div>
                         ))}
                         {searchResult.artists.items.map((item, i) => (
                             <div key={i}>
-                                <CardResult name={item.name} imageUrl={item.images[0].url} circleImg={true} url="/">
-                                    <span>Artist</span>
-                                </CardResult>
+                                <ArtistCardVariant2 className={""} imageUrl={item.images[0].url} hrefLink={"#"} artist={item.name} />
                             </div>
                         ))}
                         {searchResult.albums.items.map((item, i) => (
                             <div key={i}>
-                                <CardResult name={item.name} imageUrl={item.images[0].url} circleImg={false} url="/">
-                                    <span>Album</span>
-                                </CardResult>
+                                <ItemCardVariant2 className={""} imageUrl={item.images[0].url} title={item.name} hrefLink={"#"} type={"Album"} artist={formatArtistsNameDisplay(item.artists)} />
                             </div>
                         ))}
                         {searchResult.playlists.items.map((item, i) => (
                             <div key={i}>
-                                <CardResult name={item.name} imageUrl={item.images[0].url} circleImg={false} url="/">
-                                    <span>Playlist</span>
-                                </CardResult>
+                                <ItemCardVariant2 className={""} imageUrl={item.images[0].url} title={item.name} hrefLink={"#"} type={"Playlist"} artist={item.owner.display_name} />
                             </div>
                         ))}
                     </div>

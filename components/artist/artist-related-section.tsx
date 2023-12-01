@@ -1,5 +1,5 @@
-import { ArtistItemCard } from "../ui/artist-item-card"
 import { FetchRelatedArtist } from "@/utils/spotify/fetch-related-artists"
+import { ArtistCardVariant1 } from "../ui/spotify-item-card"
 
 const RelatedArtistSection = async ({ artistId }: { artistId: string }) => {
     const { data, error } = await FetchRelatedArtist(artistId)
@@ -15,7 +15,7 @@ const RelatedArtistSection = async ({ artistId }: { artistId: string }) => {
                         <div className='w-max flex gap-4'>
                             {artists.map((artist, i) => (
                                 <div key={i}>
-                                    <ArtistItemCard className={""} imageUrl={artist.images[1].url} name={artist.name} hrefLink={`/artist/${artist.id}`} />
+                                    <ArtistCardVariant1 className={""} imageUrl={artist.images[1].url} hrefLink={`/artist/${artist.id}`} artist={artist.name} />
                                 </div>
                             ))}
                         </div>
