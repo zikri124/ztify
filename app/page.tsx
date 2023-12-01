@@ -7,7 +7,7 @@ export default async function Home() {
   const isMobile = true
 
   return (
-    <main className="flex flex-col h-full">
+    <main className="flex flex-col h-full px-4 pt-4">
       {isMobile && <DynamicImportHeader />}
 
       <div className="my-4">
@@ -15,11 +15,11 @@ export default async function Home() {
       </div>
 
       <div className="my-4">
-        <TopArtistComponent itemWidth={160} />
+        <TopArtistComponent />
       </div>
 
       <div className="my-4">
-        <TopTracksComponent itemWidth={160} />
+        <TopTracksComponent />
       </div>
     </main>
   )

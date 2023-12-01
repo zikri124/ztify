@@ -1,7 +1,7 @@
 const YourLibraryPage = () => {
     return (
         <main>
-            Your Library
+            <h1 className="text-2xl font-bold text-center mt-[40vh]">Will be Availlable soon</h1>
         </main>
     )
 }

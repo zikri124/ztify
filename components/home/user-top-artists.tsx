@@ -1,9 +1,8 @@
 import { TopArtists } from "@/types/top-artists"
 import fetchTopArtists from "@/utils/spotify/fetch-top-artists"
-import Image from "next/image"
-import Link from "next/link"
+import { ArtistItemCard } from "../ui/artist-item-card"
 
-const UserTopArtists = async ({ itemWidth }: {itemWidth: number}) => {
+const UserTopArtists = async () => {
     const topArtists: TopArtists = await fetchTopArtists()
     
     return (
@@ -13,10 +12,9 @@ const UserTopArtists = async ({ itemWidth }: {itemWidth: number}) => {
                 {topArtists.items && (
                     <div className='w-max flex gap-4'>
                         {topArtists.items.map((artist, i) => (
-                            <Link key={i} href={"/"}>
-                                <Image height={itemWidth} width={itemWidth} alt="artist-photo" src={artist.images[0].url} className="rounded-full aspect-square relative object-cover" />
-                                <h4 className="font-bold text-center mt-2 line-clamp-1 break-word" style={{ width: `${itemWidth}px` }}>{artist.name}</h4>
-                            </Link>
+                            <div key={i}>
+                                <ArtistItemCard className="" imageUrl={artist.images[0].url} name={artist.name} hrefLink={`/artist/${artist.id}`} />
+                            </div>
                         ))}
                     </div>
                 )}

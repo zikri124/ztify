@@ -3,8 +3,9 @@ import fetchTopTracks from "@/utils/spotify/fetch-top-tracks"
 import Image from "next/image"
 import Link from "next/link"
 import formatArtistsNameDisplay from "../format-artist-display-name"
+import { ItemCardVariant1 } from "../ui/spotify-item-card"
 
-const UserTopTracks = async ({ itemWidth }: { itemWidth: number }) => {
+const UserTopTracks = async () => {
     const topTracks: TopTracks = await fetchTopTracks()
 
     return (
@@ -14,13 +15,9 @@ const UserTopTracks = async ({ itemWidth }: { itemWidth: number }) => {
                 {topTracks.items && (
                     <div className='w-max flex gap-4'>
                         {topTracks.items.map((item, i) => (
-                            <Link key={i} href={"/"}>
-                                <Image height={itemWidth} width={itemWidth} alt="artist-photo" src={item.album.images[1].url} className="aspect-square relative object-cover" />
-                                <h4 className="font-bold mt-2 line-clamp-1 break-word" style={{ width: `${itemWidth}px` }} >{item.name}</h4>
-                                <p className="line-clamp-1 text-sm" style={{ width: `${itemWidth}px` }}>
-                                    Song &#8226; {formatArtistsNameDisplay(item.artists)}
-                                </p>
-                            </Link>
+                            <div key={i}>
+                                <ItemCardVariant1 className={""} imageUrl={item.album.images[1].url} title={item.name} artists={item.artists} hrefLink="/" type="Song" />
+                            </div>
                         ))}
                     </div>
                 )}

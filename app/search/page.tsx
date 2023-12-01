@@ -33,11 +33,11 @@ const Search = () => {
     }, [query])
 
     return (
-        <main>
+        <main className="px-4 pt-4">
             <h1 className="text-2xl font-bold my-4">Search</h1>
 
             <div className="w-full">
-                <Input type="text" onChange={e => setQuery(e.target.value)} placeholder="Search" className="w-full text-lg" />
+                <Input type="text" onChange={e => setQuery(e.target.value)} placeholder="Search song, artist, playlist, and albums" className="w-full text-lg" />
             </div>
 
             <div className="mt-8">

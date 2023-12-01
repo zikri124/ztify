@@ -9,7 +9,7 @@ const NavbarMobile = () => {
 
     return (
         <>
-            <div className="grid grid-cols-3 justify-items-center gap-2 py-2">
+            <div className="grid grid-cols-3 justify-items-center gap-2 py-2 bg-gradient-to-b from-transparent to-black">
                 <Link href={'/'} className="flex flex-col items-center gap-1">
                     <Image className="invert" alt="home-logo" width={28} height={28} src={pathName == "/" ? homeIconSrcs.filled : homeIconSrcs.outline} />
                     <p className="text-sm text-secondary text-white">Home</p>
