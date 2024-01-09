@@ -10,11 +10,10 @@ type Artist = {
 }
 
 const formatArtistsNameDisplay = (artists: Artist[]) => {
-    if (artists.length == 1) {
-        return artists[0].name
-    }
-
-    let artistsString = artists.join(", ")
+    let artistsString = ""
+    artists.forEach((artist, i) => {
+        artistsString += (i > 1) ? ", " + artist.name : artist.name
+    })
 
     return artistsString
 }
