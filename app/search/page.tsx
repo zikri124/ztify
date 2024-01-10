@@ -47,7 +47,7 @@ const Search = () => {
                     <div className="space-y-4">
                         {searchResult.tracks.items.map((item, i) => (
                             <div key={i}>
-                                <ItemCardVariant2 className={""} imageUrl={item.album.images[0].url} title={item.name} hrefLink={"/"} type={"Song"} artist={formatArtistsNameDisplay(item.artists)} />
+                                <ItemCardVariant2 className={""} imageUrl={item.album.images[0].url} title={item.name} hrefLink={"#"} type={"Song"} artist={formatArtistsNameDisplay(item.artists)} />
                             </div>
                         ))}
                         {searchResult.artists.items.map((item, i) => (

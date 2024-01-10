@@ -14,7 +14,7 @@ const UserTopTracks = async () => {
                     <div className='w-max flex gap-4'>
                         {topTracks.items.map((item, i) => (
                             <div key={i}>
-                                <ItemCardVariant1 className={""} imageUrl={item.album.images[1].url} title={item.name} artist={formatArtistsNameDisplay(item.artists)} hrefLink="/" type="Song" />
+                                <ItemCardVariant1 className={""} imageUrl={item.album.images[1].url} title={item.name} artist={formatArtistsNameDisplay(item.artists)} hrefLink="#" type="Song" />
                             </div>
                         ))}
                     </div>

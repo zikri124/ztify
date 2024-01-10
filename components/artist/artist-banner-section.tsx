@@ -15,11 +15,11 @@ const ArtistBannerSection = async ({ artistId }: { artistId: string }) => {
     return (
         <>
             {artistData && (
-                <div className="w-full aspect-[4/3] relative">
+                <div className="w-full aspect-[4/3] md:h-[40vh] relative">
                     <div className="absolute z-10 p-4 w-full bottom-0 bg-gradient-to-b from-transparent to-neutral-800">
                         <h1 className="text-5xl font-bold text-white">{artistData.name}</h1>
                     </div>
-                    <Image alt="artist-photo" src={artistData.images[0].url} height={artistData.images[0].height} width={artistData.images[0].width} className="w-full aspect-[4/3] object-cover" />
+                    <Image alt="artist-photo" src={artistData.images[0].url} height={artistData.images[0].height} width={artistData.images[0].width} className="w-full aspect-[4/3] md:h-[40vh] object-cover" />
                 </div>
             )}
         </>

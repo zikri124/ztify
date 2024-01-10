@@ -16,7 +16,7 @@ const ArtistTopTracksSection = async ({ artistId }: { artistId: string }) => {
                     <div className="flex flex-col gap-4">
                         {top5Track.map((track, i) => (
                             <div key={i}>
-                                <ItemCardVariant2 className="" imageUrl={track.album.images[0].url} title={track.name} artist={formatArtistsNameDisplay(track.artists)} hrefLink="/" type="Song" />
+                                <ItemCardVariant2 className="" imageUrl={track.album.images[0].url} title={track.name} artist={formatArtistsNameDisplay(track.artists)} hrefLink="#" type="Song" />
                             </div>
                         ))}
                     </div>

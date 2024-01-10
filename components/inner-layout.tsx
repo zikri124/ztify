@@ -1,24 +1,15 @@
 import Navbar from "./navbar/navbar"
 import Container from "./ui/container"
-import { DynamicImportHeader } from "./header/dynamic-import-header"
 
 const InnerMainLayout = ({ children }: { children: React.ReactNode }) => {
-    const isMobile: boolean = true
-
-    const flexSet = {
-        mobile: 'flex flex-col',
-        desktop: 'flex flex-row'
-    }
-
     return (
         <>
-            <div className={"h-screen " + (isMobile ? flexSet.mobile : flexSet.desktop)}>
-                <div className={"grow-0 " + (isMobile ? "order-2" : "order-1")}>
-                    <Navbar isMobile={isMobile} />
+            <div className={"screen flex flex-col md:flex-row"}>
+                <div className={"flex-none overflow-y-hidden order-2 md:order-1"}>
+                    <Navbar />
                 </div>
-                <div className={"grow h-full overflow-y-auto " + (isMobile ? "order-1 bg-container" : "order-2")}>
+                <div className={"grow h-full overflow-y-auto order-1 md:order-2 md:px-8"}>
                     <Container>
-                        {!isMobile && <DynamicImportHeader />}
                         {children}
                     </Container>
                 </div>

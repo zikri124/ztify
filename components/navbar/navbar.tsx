@@ -1,14 +1,15 @@
 import NavbarMobile from "./navbar-mobile"
 import NavbarDesktop from "./navbar-desktop"
 
-const Navbar = ({ isMobile }: { isMobile: boolean }) => {
+const Navbar = () => {
     return (
         <>
-            {isMobile ? (
+            <div className="block md:hidden">
                 <NavbarMobile />
-            ) : (
+            </div>
+            <div className="hidden md:block">
                 <NavbarDesktop />
-            )}
+            </div>
         </>
     )
 }

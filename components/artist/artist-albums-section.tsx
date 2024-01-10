@@ -15,7 +15,7 @@ const ArtistAlbumsSection = async ({ artistId }: { artistId: string }) => {
                         <div className='w-max flex gap-4'>
                             {albums.items.map((album, i) => (
                                 <div key={i}>
-                                    <ItemCardVariant1 className="" imageUrl={album.images[0].url} title={album.name} hrefLink="/" artist={formatArtistsNameDisplay(album.artists)} type="Album" />
+                                    <ItemCardVariant1 className="" imageUrl={album.images[0].url} title={album.name} hrefLink="#" artist={formatArtistsNameDisplay(album.artists)} type="Album" />
                                 </div>
                             ))}
                         </div>

@@ -3,12 +3,9 @@ import dynamic from "next/dynamic"
 import { DynamicImportHeader } from "@/components/header/dynamic-import-header"
 
 export default async function Home() {
-  // const isMobile = isMobileSize()
-  const isMobile = true
-
   return (
     <main className="flex flex-col h-full px-4 pt-4">
-      {isMobile && <DynamicImportHeader />}
+      <DynamicImportHeader />
 
       <div className="my-4">
         <TopHitsComponent itemWidth={160} />
