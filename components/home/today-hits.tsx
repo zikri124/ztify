@@ -8,7 +8,7 @@ const TodayHits = async ({ itemWidth }: {itemWidth: number}) => {
 
     return (
         <>
-            <h2 className="font-bold text-2xl mt-4 mb-4">Today's biggest hits</h2>
+            <h2 className="font-bold text-2xl mt-4 mb-4">Today&apos;s biggest hits</h2>
             <div className="w-full overflow-x-auto pb-2">
                 {biggestHits && (
                     <div className='w-max flex gap-4'>
