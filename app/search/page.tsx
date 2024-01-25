@@ -1,7 +1,7 @@
 'use client'
 
 import { Input } from "@/components/ui/input"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { SearchResult } from "../../types/search-result"
 import fetchSearch from "@/utils/spotify/fetch-search"
 import LoadingResult from "@/components/search/loading-result"

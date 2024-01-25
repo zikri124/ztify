@@ -1,6 +1,6 @@
 import { TopArtists } from "@/types/top-artists"
 import fetchTopArtists from "@/utils/spotify/fetch-top-artists"
-import { ArtistCardVariant1 } from "../ui/spotify-item-card"
+import ArtistsCarousel from "../ui/carousels/artistsCarousel"
 
 const UserTopArtists = async () => {
     const topArtists: TopArtists = await fetchTopArtists()
