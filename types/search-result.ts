@@ -1,3 +1,5 @@
+import ArtistData from "./artist/artist-data"
+
 export type SearchResult = {
     "tracks": {
         "href": string,
@@ -68,35 +70,7 @@ export type SearchResult = {
             "is_local": false
         }[]
     },
-    "artists": {
-        "href": string,
-        "limit": number,
-        "next": string | null,
-        "offset": number,
-        "previous": string | null,
-        "total": number,
-        "items": {
-            "external_urls": {
-                "spotify": string
-            },
-            "followers": {
-                "href": string,
-                "total": number
-            },
-            "genres": string[],
-            "href": string,
-            "id": string,
-            "images": {
-                "url": string,
-                "height": number | null,
-                "width": number | null
-            }[],
-            "name": string,
-            "popularity": number,
-            "type": string,
-            "uri": string
-        }[]
-    },
+    "artists": ArtistData[],
     "albums": {
         "href": string,
         "limit": number,

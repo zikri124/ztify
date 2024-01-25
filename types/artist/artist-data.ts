@@ -3,7 +3,7 @@ type ArtistData = {
         "spotify": string
     },
     "followers": {
-        "href": string,
+        "href": string | null,
         "total": number
     },
     "genres": string[],
