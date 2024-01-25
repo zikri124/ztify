@@ -18,6 +18,17 @@ type ArtsitCardProps = {
     artist: string
 }
 
+export const CommonCard = ({ className, imageUrl, title, hrefLink }: { className: string, imageUrl: string, title: string, hrefLink: string }) => {
+    const itemWidth = 160
+
+    return (
+        <Link href={hrefLink} className={className}>
+            <Image height={itemWidth} width={itemWidth} alt="artist-photo" src={imageUrl} className="aspect-square relative object-cover" />
+            <h4 className="mt-2 line-clamp-2 break-word" style={{ width: `${itemWidth}px` }}>{title}</h4>
+        </Link>
+    )
+}
+
 export const ItemCardVariant1 = ({ className, imageUrl, title, hrefLink, artist, type }: CardProps) => {
     const itemWidth = 160
 

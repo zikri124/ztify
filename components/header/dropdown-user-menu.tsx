@@ -21,26 +21,28 @@ export const DropdownUserMenu = async () => {
 
     return (
         <>
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <button className="rounded-full border border-white">
-                        <UserAvatar imageUrl={userData.images.length > 1 ? userData.images[1].url : ""} userName={userData.display_name} />
-                    </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
-                    <DropdownMenuGroup>
+            {userData && (
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <button className="rounded-full border border-white">
+                            <UserAvatar imageUrl={userData.images.length > 1 ? userData.images[1].url : ""} userName={userData.display_name} />
+                        </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56">
+                        <DropdownMenuGroup>
+                            <DropdownMenuItem>
+                                <span>Profile</span>
+                            </DropdownMenuItem>
+                        </DropdownMenuGroup>
+                        <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                            <span>Profile</span>
+                            <span>
+                                <Link href={"/logout"}>Logout</Link>
+                            </span>
                         </DropdownMenuItem>
-                    </DropdownMenuGroup>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                        <span>
-                            <Link href={"/logout"}>Logout</Link>
-                        </span>
-                    </DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            )}
         </>
     )
 }

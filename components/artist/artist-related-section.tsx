@@ -1,10 +1,8 @@
 import { FetchRelatedArtist } from "@/utils/spotify/fetch-related-artists"
-import { ArtistCardVariant1 } from "../ui/spotify-item-card"
+import ArtistsCarousel from "../ui/carousels/artistsCarousel"
 
 const RelatedArtistSection = async ({ artistId }: { artistId: string }) => {
     const { data, error } = await FetchRelatedArtist(artistId)
-
-    // const artists = data?.length
 
     return (
         <>
@@ -12,13 +10,7 @@ const RelatedArtistSection = async ({ artistId }: { artistId: string }) => {
                 <h2 className="text-2xl font-bold mb-4 ">Fans also like</h2>
                 <div className="w-full overflow-x-auto pb-2">
                     {data && (
-                        <div className='w-max flex gap-4'>
-                            {data.map((artist, i) => (
-                                <div key={i}>
-                                    <ArtistCardVariant1 className={""} imageUrl={artist.images[1].url} hrefLink={`/artist/${artist.id}`} artist={artist.name} />
-                                </div>
-                            ))}
-                        </div>
+                        <ArtistsCarousel artists={data} />
                     )}
                 </div>
             </div>
