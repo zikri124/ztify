@@ -1,13 +1,11 @@
 import ArtistAlbumsLoading from "@/components/artist/loading/artist-albums-loading"
 import ArtistBannerLoading from "@/components/artist/loading/artist-banner-loading"
 import ArtistTracksLoading from "@/components/artist/loading/artist-tracks-loading"
-import { BackButton } from "@/components/ui/back-button"
 import dynamic from "next/dynamic"
 
 const Page = ({ params }: { params: { artistId: string } }) => {
     return (
         <>
-            <BackButton />
             <ArtistBannerSection artistId={params.artistId} />
             <ArtistTopTracksSection artistId={params.artistId} />
             <ArtistAlbumsSection artistId={params.artistId} />

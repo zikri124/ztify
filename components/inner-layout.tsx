@@ -1,3 +1,4 @@
+import { DynamicImportHeader } from "./header/dynamic-import-header"
 import Navbar from "./navbar/navbar"
 import Container from "./ui/container"
 
@@ -10,6 +11,7 @@ const InnerMainLayout = ({ children }: { children: React.ReactNode }) => {
                 </div>
                 <div className={"grow h-full overflow-y-auto order-1 md:order-2 md:px-8"}>
                     <Container>
+                        <DynamicImportHeader />
                         {children}
                     </Container>
                 </div>
