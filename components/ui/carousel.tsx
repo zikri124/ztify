@@ -15,6 +15,7 @@ export default ({ children }: { children: React.ReactNode }) => {
             navigation= {{
                 enabled: true
             }}
+            lazyPreloadPrevNext={4}
             className='w-full'
             breakpoints={{
                 0: {

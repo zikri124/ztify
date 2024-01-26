@@ -10,7 +10,7 @@ const ArtistTopTracksSection = async ({ artistId }: { artistId: string }) => {
 
     return (
         <>
-            <div className="mt-4 p-4">
+            <div className="mt-8 p-4">
                 <h2 className="text-2xl font-bold mb-4 ">Popular</h2>
                 {topTracks && (
                     <div className="flex flex-col gap-4">

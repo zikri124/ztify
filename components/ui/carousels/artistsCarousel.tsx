@@ -10,7 +10,7 @@ const ArtistsCarousel = ({ artists }: { artists: ArtistData[] }) => {
             <div className='w-max gap-4'>
                 {artists.map((artist, i) => (
                     <SwiperSlide key={i}>
-                        <ArtistCardVariant1 className={""} imageUrl={artist.images[0].url} hrefLink={`/artist/${artist.id}`} artist={artist.name} />
+                        <ArtistCardVariant1 className={""} imageUrl={artist.images[1].url} hrefLink={`/artist/${artist.id}`} artist={artist.name} />
                     </SwiperSlide>
                 ))}
             </div>
