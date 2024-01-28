@@ -6,8 +6,14 @@ import { SearchResult } from "../../types/search-result"
 import fetchSearch from "@/utils/spotify/fetch-search"
 import LoadingResult from "@/components/search/loading-result"
 import formatArtistsNameDisplay from "@/utils/format-artist-display-name"
-import { ArtistCardVariant2, ItemCardVariant2 } from "@/components/ui/spotify-item-card"
+import { ItemCardVariant2 } from "@/components/ui/spotify-item-card"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import AlbumsCarousel from "@/components/ui/carousels/albums-carousel"
+import PlaylistsCarousel from "@/components/ui/carousels/playlists-carousel"
+import ArtistsCarousel from "@/components/ui/carousels/artists-carousel"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { miliToMinSecString } from "@/utils/time-parser"
+import SongResultSection from "@/components/search/song-result-section"
 
 const Search = () => {
     const [query, setQuery] = useState<string>()
@@ -47,6 +53,9 @@ const Search = () => {
                 let qSearchQuery: string = searchParams.get("q")!
                 searchInput.current!.value = qSearchQuery
                 await startSearch(qSearchQuery)
+            } else if (query == "" && searchResult.current != null) {
+                router.push(pathName)
+                searchResult.current = null
             }
         }, 1000)
 
@@ -57,39 +66,43 @@ const Search = () => {
 
     return (
         <main className="px-4 pt-4">
-            <h1 className="text-2xl font-bold my-4">Search</h1>
+            <h1 className="text-4xl font-bold my-4">Search</h1>
 
             <div className="w-full">
                 <Input type="text" ref={searchInput} onChange={e => setQuery(e.target.value)} placeholder="Search song, artist, playlist, and albums" className="w-full text-lg" />
             </div>
 
-            <div className="mt-8">
+            <div className="mt-4">
                 {isLoading && (
                     <LoadingResult />
                 )}
 
                 {(!isLoading && searchResult.current) && (
-                    <div className="space-y-4">
-                        {searchResult.current!.tracks.items.map((item, i) => (
-                            <div key={i}>
-                                <ItemCardVariant2 className={""} imageUrl={item.album.images[0].url} title={item.name} hrefLink={"#"} type={"Song"} artist={formatArtistsNameDisplay(item.artists)} />
+                    <div>
+                        {(searchResult.current?.tracks.items.length > 0) && (
+                            <SongResultSection tracksResult={searchResult.current!.tracks.items} />
+                        )}
+
+                        {(searchResult.current?.artists.items.length > 0) && (
+                            <div className="py-2">
+                                <h2 className="font-bold text-2xl mt-4 mb-4">Artists</h2>
+                                <ArtistsCarousel artists={searchResult.current!.artists.items} />
                             </div>
-                        ))}
-                        {searchResult.current!.artists.items.map((item, i) => (
-                            <div key={i}>
-                                <ArtistCardVariant2 className={""} imageUrl={item.images[0].url} hrefLink={`/artist/${item.id}`} artist={item.name} />
+                        )}
+
+                        {(searchResult.current?.albums.items.length > 0) && (
+                            <div className="py-2">
+                                <h2 className="font-bold text-2xl mt-4 mb-4">Albums</h2>
+                                <AlbumsCarousel data={searchResult.current!.albums.items} />
                             </div>
-                        ))}
-                        {searchResult.current!.albums.items.map((item, i) => (
-                            <div key={i}>
-                                <ItemCardVariant2 className={""} imageUrl={item.images[0].url} title={item.name} hrefLink={"#"} type={"Album"} artist={formatArtistsNameDisplay(item.artists)} />
+                        )}
+
+                        {(searchResult.current?.playlists.items.length > 0) && (
+                            <div className="py-2">
+                                <h2 className="font-bold text-2xl mt-4 mb-4">Playlists</h2>
+                                <PlaylistsCarousel data={searchResult.current!.playlists.items} />
                             </div>
-                        ))}
-                        {searchResult.current!.playlists.items.map((item, i) => (
-                            <div key={i}>
-                                <ItemCardVariant2 className={""} imageUrl={item.images[0].url} title={item.name} hrefLink={"#"} type={"Playlist"} artist={item.owner.display_name} />
-                            </div>
-                        ))}
+                        )}
                     </div>
                 )}
             </div>

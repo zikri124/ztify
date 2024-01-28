@@ -1,5 +1,5 @@
 import { FetchRelatedArtist } from "@/utils/spotify/fetch-related-artists"
-import ArtistsCarousel from "../ui/carousels/artistsCarousel"
+import ArtistsCarousel from "../ui/carousels/artists-carousel"
 
 const RelatedArtistSection = async ({ artistId }: { artistId: string }) => {
     const { data, error } = await FetchRelatedArtist(artistId)

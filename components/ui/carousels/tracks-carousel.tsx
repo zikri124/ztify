@@ -1,11 +1,11 @@
 'use client'
 import Carousel from "../carousel"
 import { SwiperSlide } from "swiper/react"
-import { Album } from "@/types/album"
 import formatArtistsNameDisplay from "@/utils/format-artist-display-name"
 import { ItemCardVariant1 } from "../spotify-item-card"
+import { Track } from "@/types/track"
 
-const AlbumsCarousel = ({ data }: { data: Album[] }) => {
+const TracksCarousel = ({ data }: { data: Track[] }) => {
     return (
         <Carousel>
             <div className='w-max gap-4'>
@@ -13,7 +13,7 @@ const AlbumsCarousel = ({ data }: { data: Album[] }) => {
                     <div>
                         {data.map((item, i) => (
                             <SwiperSlide key={i}>
-                                <ItemCardVariant1 className="" imageUrl={item.images[1].url} title={item.name} hrefLink="#" artist={formatArtistsNameDisplay(item.artists)} type="Album" />
+                                <ItemCardVariant1 className="" imageUrl={item.album.images[1].url} title={item.name} hrefLink="#" subtitle={formatArtistsNameDisplay(item.artists)} type="Album" />
                             </SwiperSlide>
                         ))}
                     </div>
@@ -24,4 +24,4 @@ const AlbumsCarousel = ({ data }: { data: Album[] }) => {
     )
 }
 
-export default AlbumsCarousel
+export default TracksCarousel

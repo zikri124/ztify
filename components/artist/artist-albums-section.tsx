@@ -1,6 +1,6 @@
 import ArtistAlbums from "@/types/artist/artist-albums"
 import { FetchArtistAlbums } from "@/utils/spotify/fetch-artist-albums"
-import AlbumsCarousel from "../ui/carousels/albumsCarousel"
+import AlbumsCarousel from "../ui/carousels/albums-carousel"
 
 const ArtistAlbumsSection = async ({ artistId }: { artistId: string }) => {
     const albums: ArtistAlbums = await FetchArtistAlbums(artistId)

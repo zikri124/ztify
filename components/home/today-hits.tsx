@@ -1,6 +1,6 @@
 import { BiggestHits } from "@/types/biggest-hits"
 import fetchBiggestHits from "@/utils/spotify/fetch-biggest-hits"
-import PlaylistsCarousel from "../ui/carousels/playlistsCarousel"
+import PlaylistsCarousel from "../ui/carousels/playlists-carousel"
 
 const TodayHits = async ({ itemWidth }: {itemWidth: number}) => {
     const biggestHits: BiggestHits = await fetchBiggestHits()

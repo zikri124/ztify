@@ -1,6 +1,6 @@
 import { TopTracks } from "@/types/top-tracks"
 import fetchTopTracks from "@/utils/spotify/fetch-top-tracks"
-import TracksCarousel from "../ui/carousels/tracksCarousel"
+import TracksCarousel from "../ui/carousels/tracks-carousel"
 
 const UserTopTracks = async () => {
     const topTracks: TopTracks = await fetchTopTracks()

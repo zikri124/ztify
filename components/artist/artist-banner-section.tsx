@@ -14,7 +14,7 @@ const ArtistBannerSection = async ({ artistId }: { artistId: string }) => {
                         <h1 className="text-5xl font-bold text-white">{artistData.name}</h1>
                     </div>
                     <Image alt="artist-photo" src={artistData.images[0].url} height={artistData.images[0].height} width={artistData.images[0].width} className="w-full aspect-[4/3] md:h-[40vh] object-cover" /> */}
-                    <Image alt="artist-photo" src={artistData.images[0].url} height={artistData.images[0].height} width={artistData.images[0].width} className="aspect-squere relative object-cover shadow-xl shadow-slate-700 w-full md:w-[16rem]" style={{height: 'auto'}} />
+                    <Image alt="artist-photo" src={artistData.images[0].url} height={artistData.images[0].height} width={artistData.images[0].width} className="aspect-square relative object-cover shadow-xl shadow-slate-700 w-full md:w-[16rem]" style={{height: 'auto'}} />
                     <div>
                         <h2 className="text-xl md:text-2xl font-semibold text-white">Artist</h2>
                         <h1 className="text-6xl font-bold text-white">{artistData.name}</h1>
