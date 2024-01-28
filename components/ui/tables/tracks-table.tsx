@@ -1,5 +1,5 @@
 import formatArtistsNameDisplay from "@/utils/format-artist-display-name"
-import { miliToMinSecString } from "@/utils/time-parser"
+import { miliToMinSecString } from "@/utils/time-utils"
 import { ItemCardVariant2 } from "../spotify-item-card"
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "../table"
 import { Track } from "@/types/track"
