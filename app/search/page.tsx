@@ -1,27 +1,52 @@
 'use client'
 
 import { Input } from "@/components/ui/input"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { SearchResult } from "../../types/search-result"
 import fetchSearch from "@/utils/spotify/fetch-search"
 import LoadingResult from "@/components/search/loading-result"
 import formatArtistsNameDisplay from "@/utils/format-artist-display-name"
 import { ArtistCardVariant2, ItemCardVariant2 } from "@/components/ui/spotify-item-card"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 const Search = () => {
     const [query, setQuery] = useState<string>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [searchResult, setSearchResult] = useState<SearchResult>()
+    const searchResult = useRef<SearchResult | null>(null)
+    const searchInput = useRef<HTMLInputElement>(null)
+
+    const router = useRouter()
+    const pathName = usePathname()
+    const searchParams = useSearchParams()
+
+    const createQueryString = useCallback(
+        (name: string, value: string) => {
+            const params = new URLSearchParams(searchParams.toString())
+            params.set(name, value)
+
+            return params.toString()
+        },
+        [searchParams]
+    )
+
+    const startSearch = async (q: string) => {
+        setIsLoading(true)
+        const result: SearchResult | null = await fetchSearch(q)
+        if (result) {
+            searchResult.current = result
+            setIsLoading(false)
+        }
+    }
 
     useEffect(() => {
         const timer = setTimeout(async () => {
             if (query !== "" && query !== undefined) {
-                setIsLoading(true)
-                const result: SearchResult | null = await fetchSearch(query!)
-                if (result) {
-                    setSearchResult(result)
-                    setIsLoading(false)
-                }
+                router.push(pathName + '?' + createQueryString('q', query))
+                await startSearch(query!)
+            } else if (searchParams.get("q") != null && query !== "") {
+                let qSearchQuery: string = searchParams.get("q")!
+                searchInput.current!.value = qSearchQuery
+                await startSearch(qSearchQuery)
             }
         }, 1000)
 
@@ -35,7 +60,7 @@ const Search = () => {
             <h1 className="text-2xl font-bold my-4">Search</h1>
 
             <div className="w-full">
-                <Input type="text" onChange={e => setQuery(e.target.value)} placeholder="Search song, artist, playlist, and albums" className="w-full text-lg" />
+                <Input type="text" ref={searchInput} onChange={e => setQuery(e.target.value)} placeholder="Search song, artist, playlist, and albums" className="w-full text-lg" />
             </div>
 
             <div className="mt-8">
@@ -43,24 +68,24 @@ const Search = () => {
                     <LoadingResult />
                 )}
 
-                {(!isLoading && searchResult) && (
+                {(!isLoading && searchResult.current) && (
                     <div className="space-y-4">
-                        {searchResult.tracks.items.map((item, i) => (
+                        {searchResult.current!.tracks.items.map((item, i) => (
                             <div key={i}>
                                 <ItemCardVariant2 className={""} imageUrl={item.album.images[0].url} title={item.name} hrefLink={"#"} type={"Song"} artist={formatArtistsNameDisplay(item.artists)} />
                             </div>
                         ))}
-                        {searchResult.artists.items.map((item, i) => (
+                        {searchResult.current!.artists.items.map((item, i) => (
                             <div key={i}>
-                                <ArtistCardVariant2 className={""} imageUrl={item.images[0].url} hrefLink={"#"} artist={item.name} />
+                                <ArtistCardVariant2 className={""} imageUrl={item.images[0].url} hrefLink={`/artist/${item.id}`} artist={item.name} />
                             </div>
                         ))}
-                        {searchResult.albums.items.map((item, i) => (
+                        {searchResult.current!.albums.items.map((item, i) => (
                             <div key={i}>
                                 <ItemCardVariant2 className={""} imageUrl={item.images[0].url} title={item.name} hrefLink={"#"} type={"Album"} artist={formatArtistsNameDisplay(item.artists)} />
                             </div>
                         ))}
-                        {searchResult.playlists.items.map((item, i) => (
+                        {searchResult.current!.playlists.items.map((item, i) => (
                             <div key={i}>
                                 <ItemCardVariant2 className={""} imageUrl={item.images[0].url} title={item.name} hrefLink={"#"} type={"Playlist"} artist={item.owner.display_name} />
                             </div>
