@@ -12,7 +12,7 @@ type Artist = {
 const formatArtistsNameDisplay = (artists: Artist[]) => {
     let artistsString = ""
     artists.forEach((artist, i) => {
-        artistsString += (i > 1) ? ", " + artist.name : artist.name
+        artistsString += (i > 0) ? ", " + artist.name : artist.name
     })
 
     return artistsString
