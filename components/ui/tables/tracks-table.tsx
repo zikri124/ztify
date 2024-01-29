@@ -7,7 +7,7 @@ import { Track } from "@/types/track"
 const TracksTable = ({ tracksResult, variant }: { tracksResult: Track[], variant: string }) => {
     return (
         <Table>
-            <TableHeader className={(variant == "noheader") ? "hidden" : "hidden md:contents"}>
+            <TableHeader className={(variant.includes("noheader")) ? "hidden" : "hidden md:contents"}>
                 <TableRow>
                     <TableHead>#</TableHead>
                     <TableHead>Title</TableHead>
@@ -19,7 +19,17 @@ const TracksTable = ({ tracksResult, variant }: { tracksResult: Track[], variant
                     <TableRow key={i}>
                         <TableCell>{i + 1}</TableCell>
                         <TableCell>
-                            <ItemCardVariant2 className={""} imageUrl={item.album.images[0].url} title={item.name} hrefLink={"#"} type={"Song"} subtitle={formatArtistsNameDisplay(item.artists)} />
+                            {(variant.includes("noimage")) ? (
+                                <div className="flex-grow flex flex-col gap-1 justify-center">
+                                    <h4 className="font-bold line-clamp-1 break-all">{item.name}</h4>
+                                    <p className="line-clamp-1 text-sm break-all" >
+                                        {formatArtistsNameDisplay(item.artists)}
+                                    </p>
+                                </div>
+                            ) : (
+                                <ItemCardVariant2 className={""} imageUrl={item.album.images[0].url} title={item.name} hrefLink={"#"} type={"Song"} subtitle={formatArtistsNameDisplay(item.artists)} />
+                            )}
+
                         </TableCell>
                         <TableCell className="hidden md:block">{miliToMinSecString(item.duration_ms)}</TableCell>
                     </TableRow>

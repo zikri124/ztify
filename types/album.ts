@@ -1,3 +1,5 @@
+import { Track } from "./track"
+
 export type Album = {
     "album_type": string,
     "total_tracks": number,
@@ -30,6 +32,10 @@ export type Album = {
         "type": string,
         "uri": string
     }[],
+    tracks: {
+        "href": string,
+        "items": Track[]
+    },
     "is_playable": boolean | null,
     "album_group": string | null
 }

@@ -13,7 +13,7 @@ const AlbumsCarousel = ({ data }: { data: Album[] }) => {
                     <div>
                         {data.map((item, i) => (
                             <SwiperSlide key={i}>
-                                <ItemCardVariant1 className="" imageUrl={item.images[1].url} title={item.name} hrefLink="#" subtitle={formatArtistsNameDisplay(item.artists)} type="Album" />
+                                <ItemCardVariant1 className="" imageUrl={item.images[1].url} title={item.name} hrefLink={`/album/${item.id}`} subtitle={formatArtistsNameDisplay(item.artists)} type="Album" />
                             </SwiperSlide>
                         ))}
                     </div>
