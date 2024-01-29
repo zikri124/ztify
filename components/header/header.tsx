@@ -1,8 +1,9 @@
+import dynamic from "next/dynamic"
 import { BackButton } from "./back-button"
-import { DropdownUserMenu } from "./dropdown-user-menu"
+import { Skeleton } from "../ui/skeleton"
 
 const Header = async () => {
-    
+
     return (
         <>
             <div className='flex justify-between items-center w-full px-4 py-4 border-b-2'>
@@ -14,5 +15,11 @@ const Header = async () => {
         </>
     )
 }
+
+const DropdownUserMenu = dynamic(
+    () => import('../header/dropdown-user-menu'),
+    {
+        loading: () => <Skeleton className='h-12 w-12 rounded-full' />
+    })
 
 export default Header

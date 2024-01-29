@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
-import { DynamicImportHeader } from '@/components/header/dynamic-import-header'
 import Navbar from '@/components/navbar/navbar'
 import Container from '../components/ui/container'
+import Header from '@/components/header/header'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -32,7 +32,7 @@ export default function RootLayout({
             </div>
             <div className={"grow h-full overflow-y-auto order-1 md:order-2"}>
               <Container>
-                <DynamicImportHeader />
+                <Header />
                 {children}
               </Container>
             </div>
