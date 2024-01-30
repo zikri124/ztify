@@ -4,7 +4,7 @@ import dynamic from "next/dynamic"
 
 export default async function Home() {
   return (
-    <main className="flex flex-col h-full px-4 pt-4">
+    <div className="flex flex-col px-4 pt-4">
       <div className="mt-4">
         <h1 className="font-black text-3xl">Good {getCurrentTimeString()}</h1>
       </div>
@@ -20,7 +20,7 @@ export default async function Home() {
       <div className="my-4">
         <TopTracksComponent />
       </div>
-    </main>
+    </div>
   )
 }
 

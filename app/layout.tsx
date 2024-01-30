@@ -27,11 +27,11 @@ export default function RootLayout({
           attribute='class'
           defaultTheme='dark'
         >
-          <div className={"screen flex flex-col md:flex-row"}>
+          <div className={"screen flex flex-col md:flex-row p-0 md:p-1 overflow-hidden"}>
             <div className={"flex-none overflow-y-hidden order-2 md:order-1"}>
               <Navbar />
             </div>
-            <div className={"grow h-full overflow-y-auto order-1 md:order-2"}>
+            <div className={"grow h-screen p-0 md:p-1 overflow-y-hidden order-1 md:order-2"}>
               <Container>
                 <Header />
                 {children}

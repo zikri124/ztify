@@ -1,7 +1,7 @@
 const Container = ({ children }: {children: React.ReactNode}) => {
     return (
         <>
-            <div className="bg-container rounded-2xl md:bg-neutral-900 md:rounded-xl md:px-6 md:my-2 md:me-2 min-h-full pb-6">
+            <div className="bg-container h-full w-full overflow-y-auto rounded-none md:bg-neutral-900 md:rounded-xl px-0 md:px-6 pb-6">
                 {children}
             </div>
         </>
