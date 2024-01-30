@@ -17,11 +17,11 @@ const DropdownUserMenu = async () => {
 
     return (
         <>
-            {userData && (
+            {userData.images && (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <button className="rounded-full border border-white">
-                            <UserAvatar imageUrl={userData.images?.length > 1 ? userData.images[1].url : ""} userName={userData.display_name} />
+                            <UserAvatar imageUrl={userData.images?.length > 1 ? userData.images[0].url : ""} userName={userData.display_name} />
                         </button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56">

@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic"
 import { BackButton } from "./back-button"
 import { Skeleton } from "../ui/skeleton"
+import { Suspense } from "react"
 
 const Header = async () => {
 
@@ -10,7 +11,9 @@ const Header = async () => {
                 <div className="flex gap-2 items-center">
                     <BackButton />
                 </div>
-                <DropdownUserMenu />
+                <Suspense fallback={<Skeleton className='h-12 w-12 rounded-full' />}>
+                    <DropdownUserMenu />
+                </Suspense>
             </div>
         </>
     )
