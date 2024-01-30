@@ -21,7 +21,7 @@ const View = async ({playlistId}: {playlistId: string}) => {
     return (
         <>
             <div className="w-full relative flex flex-col md:flex-row justify-items-center items-start md:items-end gap-8 lg:gap-12 py-4 md:py-8 px-4">
-                <Image alt="artist-photo" src={playlistData.images[0].url} height={playlistData.images[0].height | 300} width={playlistData.images[0].width | 300} className="aspect-square relative object-cover shadow-xl shadow-slate-700 w-full md:w-[16rem]" style={{ height: 'auto' }} />
+                <Image alt="playlist-cover" src={playlistData.images[0].url} height={playlistData.images[0].height | 300} width={playlistData.images[0].width | 300} className="aspect-square relative object-cover shadow-xl shadow-slate-700 w-full md:w-[16rem]" style={{ height: 'auto' }} />
                 <div>
                     <h2 className="text-sm md:text-md text-white font-semibold">Playlist</h2>
                     <h1 className="text-4xl md:text-6xl font-black text-white mb-6">{playlistData.name}</h1>
