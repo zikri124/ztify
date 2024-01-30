@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Skeleton } from "./skeleton"
+import ArtistData from "@/types/artist/artist-data"
+import FormatArtistsNameDisplay from "./artists-buttons-name"
 
 type CardProps = {
     className: string,
@@ -25,7 +27,7 @@ export const CommonCard = ({ className, imageUrl, title, hrefLink, subtitle }: {
         <Link href={hrefLink} className={className}>
             <Image height={itemWidth} width={itemWidth} alt="artist-photo" src={imageUrl} className="aspect-square relative object-cover" />
             <h4 className="font-bold mt-2 line-clamp-1 break-all" style={{ width: `${itemWidth}px` }}>{title}</h4>
-            <p className="line-clamp-2 text-sm break-all" style={{ width: `${itemWidth}px` }}>
+            <p className="line-clamp-2 text-sm break-all text-neutral-300" style={{ width: `${itemWidth}px` }}>
                 {subtitle}
             </p>
         </Link>
@@ -39,7 +41,7 @@ export const ItemCardVariant1 = ({ className, imageUrl, title, hrefLink, subtitl
         <Link className={className} href={hrefLink}>
             <Image height={itemWidth} width={itemWidth} alt="artist-photo" src={imageUrl} className="aspect-square relative object-cover" />
             <h4 className="font-bold mt-2 line-clamp-1 break-all" style={{ width: `${itemWidth}px`, height: 'auto' }} >{title}</h4>
-            <p className="line-clamp-1 text-sm break-all" style={{ width: `${itemWidth}px` }}>
+            <p className="line-clamp-1 text-sm break-all text-neutral-300" style={{ width: `${itemWidth}px` }}>
                 {subtitle}
             </p>
         </Link>
@@ -65,7 +67,7 @@ export const ItemCardVariant2 = ({ className, imageUrl, title, hrefLink, subtitl
             <Image height={itemWidth} width={itemWidth} alt="artist-photo" src={imageUrl} className="aspect-square relative object-cover flex-0" />
             <div className="flex-grow flex flex-col gap-1 justify-center">
                 <h4 className="font-bold line-clamp-1 break-all">{title}</h4>
-                <p className="line-clamp-1 text-sm break-all" >
+                <p className="line-clamp-1 text-sm break-all text-neutral-300" >
                     {subtitle}
                 </p>
             </div>
@@ -108,7 +110,7 @@ export const SkeletonArtistCardVariant1 = () => {
 }
 
 export const ArtistCardVariant2 = ({ className, imageUrl, hrefLink, artist }: ArtsitCardProps) => {
-    const itemWidth = 64
+    const itemWidth = 48
     return (
         <Link className={`${className} flex gap-4`} href={hrefLink}>
             <Image height={itemWidth} width={itemWidth} alt="artist-photo" src={imageUrl} className="aspect-square rounded-full relative object-cover flex-0" />

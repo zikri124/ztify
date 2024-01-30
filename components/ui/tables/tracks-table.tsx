@@ -22,7 +22,7 @@ const TracksTable = ({ tracksResult, variant }: { tracksResult: Track[], variant
                             {(variant.includes("noimage")) ? (
                                 <div className="flex-grow flex flex-col gap-1 justify-center">
                                     <h4 className="font-bold line-clamp-1 break-all">{item.name}</h4>
-                                    <p className="line-clamp-1 text-sm break-all" >
+                                    <p className="line-clamp-1 text-sm break-all text-neutral-300" >
                                         {formatArtistsNameDisplay(item.artists)}
                                     </p>
                                 </div>

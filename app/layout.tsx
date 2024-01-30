@@ -33,8 +33,10 @@ export default function RootLayout({
             </div>
             <div className={"grow h-screen p-0 md:p-1 overflow-y-hidden order-1 md:order-2"}>
               <Container>
-                <Header />
-                {children}
+                <div>
+                  <Header />
+                  {children}
+                </div>
                 <Footer />
               </Container>
             </div>

@@ -13,7 +13,7 @@ const PlaylistsCarousel = ({ data }: { data: Playlist[] }) => {
                     <div>
                         {data.map((item, i) => (
                             <SwiperSlide key={i}>
-                                <CommonCard className={""} imageUrl={item.images[0].url} title={upperFirstLetter(item.name)} subtitle={item.owner.display_name} hrefLink={`/playlist/${item.id}`} />
+                                <CommonCard className={""} imageUrl={item.images[0].url} title={upperFirstLetter(item.name)} subtitle={item.description} hrefLink={`/playlist/${item.id}`} />
                             </SwiperSlide>
                         ))}
                     </div>

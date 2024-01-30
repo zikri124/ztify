@@ -1,3 +1,4 @@
+import ArtistData from "./artist/artist-data"
 import { Track } from "./track"
 
 export type Album = {
@@ -22,17 +23,8 @@ export type Album = {
     },
     "type": string,
     "uri": string,
-    "artists": {
-        "external_urls": {
-            "spotify": string
-        },
-        "href": string,
-        "id": string,
-        "name": string,
-        "type": string,
-        "uri": string
-    }[],
-    tracks: {
+    "artists": ArtistData[],
+    "tracks": {
         "href": string,
         "items": Track[]
     },

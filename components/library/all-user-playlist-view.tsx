@@ -12,7 +12,7 @@ const AllUserPlaylistView = async () => {
                 <div className="flex flex-col gap-4">
                     {playlist.map((item, i) => (
                         <div key={i}>
-                            <ItemCardVariant2 className="" imageUrl={item.images[0].url} title={item.name} hrefLink={"#"} type={"Playlist"} artist={item.owner.display_name} />
+                            <ItemCardVariant2 className="" imageUrl={item.images[0].url} title={item.name} hrefLink={"#"} type={"Playlist"} subtitle={item.owner.display_name} />
                         </div>
                     ))}
                 </div>
