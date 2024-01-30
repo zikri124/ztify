@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import Navbar from '@/components/navbar/navbar'
 import Container from '../components/ui/container'
 import Header from '@/components/header/header'
+import Footer from '@/components/ui/footer'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
               <Container>
                 <Header />
                 {children}
+                <Footer />
               </Container>
             </div>
           </div>
