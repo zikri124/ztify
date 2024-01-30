@@ -6,7 +6,7 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-export default ({ children }: { children: React.ReactNode }) => {
+const Carousel = ({ children }: { children: React.ReactNode }) => {
     return (
         <Swiper
             modules={[Navigation]}
@@ -72,3 +72,5 @@ export default ({ children }: { children: React.ReactNode }) => {
         </Swiper>
     )
 }
+
+export default Carousel
