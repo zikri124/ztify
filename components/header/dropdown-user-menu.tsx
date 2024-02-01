@@ -6,7 +6,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import Link from "next/link"
 import { User } from "@/types/user"
 import fetchUserData from "@/utils/spotify/fetch-user-data"
@@ -21,12 +20,12 @@ const DropdownUserMenu = async () => {
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <button className="rounded-full border border-white">
-                            <UserAvatar imageUrl={userData.images?.length > 1 ? userData.images[0].url : ""} userName={userData.display_name} />
+                            <UserAvatar imageUrl={userData.images?.length > 1 ? userData.images[0].url : ""} userName={userData.display_name}/>
                         </button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56">
                         <DropdownMenuGroup>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem disabled>
                                 <span>Profile</span>
                             </DropdownMenuItem>
                         </DropdownMenuGroup>

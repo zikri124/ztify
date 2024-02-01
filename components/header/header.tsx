@@ -7,7 +7,7 @@ const Header = async () => {
 
     return (
         <>
-            <div className='flex justify-between items-center w-full px-4 py-4 border-b-2'>
+            <div className='flex justify-between items-center w-full px-4 py-2 border-b-2'>
                 <div className="flex gap-2 items-center">
                     <BackButton />
                 </div>
